@@ -1,4 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">STUDENT WORKSPACE!</h1>
+<h2 align="left">TCC Ciência da Computação</h2>
+
+## Sobre
+Sistema que auxilia a concentração utilizando Pomodoro, onde as pessoas podem
+fazer login usando sua conta do GOOGLE ou APPLE, a cada ciclo de descanço terá
+alguma atividade para descontração, completando esse exercício será somado pontos
+e quando tiver o avanço de nível será possível compartilha em uma rede social.
+
+Usando NEXT.JS no front e Firebase para autenticação e banco de dados.
+
+## Dependências Necessárias!
+O que você precisa ter para rodar essa aplicação:
+- Node (versão LTS de preferência).
+- NPM ou YARN (de preferência YARN).
+
+O que você precisa fazer para rodar essa aplicação:
+- Clonar o repositório.
+- Copiar e colar o arquivo `.env.example` e renomear para `.env.local` e colar os valores das variáveis de ambiente.
+- Entrar na pasta do projeto pelo terminal e rodar os comandos:
+
+```bash
+# Instalar as dependências
+
+yarn
+```
+```bash
+# Iniciar o projeto como desenvolvimento
+
+yarn start
+```
+
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -31,4 +63,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
