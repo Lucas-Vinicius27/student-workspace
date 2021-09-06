@@ -1,14 +1,14 @@
-<svg width="390" height="50" viewBox="0 0 390 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="410" height="50" viewBox="0 0 410 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0)">
 <style>
 .text {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 27px;
+    font-size: 30px;
     font-weight: bold;
 }
 </style>
-<text x="68" y="38.5" class="text" fill="white">STUDENT</text>
-<text x="210" y="38.5" class="text" fill="white">WORKSPACE</text>
+<text x="56" y="38.5" class="text" fill="white">STUDENT</text>
+<text x="207" y="38.5" class="text" fill="white">WORKSPACE</text>
 <path d="M205.583 34.3471C205.061 36.7431 203.122 38.6849 200.19 38.6849C197.257 38.6849 196.167 36.7459 196.689 34.3471C197.212 31.9484 199.151 30.0122 202.083 30.0122C205.016 30.0122 206.097 31.9484 205.583 34.3471Z" fill="#4CD62B"/>
 <path d="M25.5088 3.745H37.4829L27.5215 50H15.5474L25.5088 3.745Z" fill="white"/>
 <path d="M43.0786 3.745H55.0527L47.2914 39.9868H35.3145L43.0786 3.745Z" fill="white"/>
@@ -16,7 +16,7 @@
 </g>
 <defs>
 <clipPath id="clip0">
-<rect width="390" height="50" fill="white"/>
+<rect width="410" height="50" fill="white"/>
 </clipPath>
 </defs>
 </svg>
