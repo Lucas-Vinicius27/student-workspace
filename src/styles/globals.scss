@@ -27,6 +27,12 @@ body, input, textarea, button {
   font: 400 1rem 'Inter', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--title);
+}
+
 h1 {
   font-size: 2rem;
 }
