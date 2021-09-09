@@ -6,7 +6,7 @@ import logo from '../../public/logo.svg';
 import logoFull from '../../public/logo-full.svg';
 import logoGoogle from '../../public/icons/google-icon.svg';
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
   return (
     <main className={styles.container}>
       <Head>
@@ -29,4 +29,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Index
