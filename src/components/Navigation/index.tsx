@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import houseBlue from '../../../public/icons/house-blue.svg';
@@ -10,43 +11,62 @@ import logoSmall from '../../../public/logo-small.svg';
 import styles from './styles.module.scss';
 
 export function Navigation() {
+    const router = useRouter();
+
     return (
         <aside className={styles.container}>
-            <Image src={logoSmall} alt="Logo do sistema" />
+            <div className={styles.logo}>
+                <Image src={logoSmall} alt="Logo do sistema" />
+            </div>
             <nav>
                 <ul>
                     <li>
-                        <Link href="/home" passHref>
-                            <a>
-                                {window.location.pathname === "/home" ? (
-                                    <Image src={houseBlue} alt="Dashboard" />
-                                ) : (
-                                    <Image src={houseGray} alt="Dashboard" />
-                                )}
-                            </a>
-                        </Link>
+                        <div className={styles.containerLi}>
+                            <div className={
+                                router.pathname === "/home" ? styles.active : ""
+                            }></div>
+                            <Link href="/home" passHref>
+                                <a>
+                                    {router.pathname === "/home" ? (
+                                        <Image src={houseBlue} alt="Dashboard" />
+                                    ) : (
+                                        <Image src={houseGray} alt="Dashboard" />
+                                    )}
+                                </a>
+                            </Link>
+                        </div>
                     </li>
                     <li>
-                        <Link href="/ranking" passHref>
-                            <a>
-                                {window.location.pathname === "/ranking" ? (
-                                    <Image src={rankingBlue} alt="Ranking" />
-                                ) : (
-                                    <Image src={rankingGray} alt="Ranking" />
-                                )}
-                            </a>
-                        </Link>
+                        <div className={styles.containerLi}>
+                            <div className={
+                                router.pathname === "/ranking" ? styles.active : ""
+                            }></div>
+                            <Link href="/ranking" passHref>
+                                <a>
+                                    {router.pathname === "/ranking" ? (
+                                        <Image src={rankingBlue} alt="Ranking" />
+                                    ) : (
+                                        <Image src={rankingGray} alt="Ranking" />
+                                    )}
+                                </a>
+                            </Link>
+                        </div>
                     </li>
                     <li>
-                        <Link href="/user" passHref>
-                            <a>
-                                {window.location.pathname === "/user" ? (
-                                    <Image src={userBlue} alt="Usuário" />
-                                ) : (
-                                    <Image src={userGray} alt="Usuário" />
-                                )}
-                            </a>
-                        </Link>
+                        <div className={styles.containerLi}>
+                            <div className={
+                                router.pathname === "/user" ? styles.active : ""
+                            }></div>
+                            <Link href="/user" passHref>
+                                <a>
+                                    {router.pathname === "/user" ? (
+                                        <Image src={userBlue} alt="Usuário" />
+                                    ) : (
+                                        <Image src={userGray} alt="Usuário" />
+                                    )}
+                                </a>
+                            </Link>
+                        </div>
                     </li>
                 </ul>
             </nav>
