@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import * as firebaseDatabase from "firebase/database";
 // import { getDatabase } from "firebase/database";
