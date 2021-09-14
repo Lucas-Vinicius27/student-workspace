@@ -19,7 +19,8 @@ const Index: NextPage = () => {
       <section>
         <div className={styles.mainContent}>
           <Image src={logoFull} alt="Student Workspace" />
-          <h1>Bem-Vindo</h1>
+          <h1>Bem-Vindo(a)</h1>
+          <p>Aqui será o lugar onde você poderá maximizar seus estudos!</p>
           <Link href="/home" passHref>
             <a>
               <button className={styles.createRoom}>
