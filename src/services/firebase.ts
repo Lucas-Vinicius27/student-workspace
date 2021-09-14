@@ -19,4 +19,10 @@ const auth = getAuth();
 const database = firebaseDatabase;
 // const database = getDatabase();
 
-export { firebase, auth, database };
+export {
+    firebase,
+    auth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    database
+};
