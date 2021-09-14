@@ -13,7 +13,7 @@ const Index: NextPage = () => {
       <Head>
         <title>Student Workspace</title>
       </Head>
-      <aside>
+      <aside className={styles.srOnly}>
         <Image src={logo} alt="Logo do sistema" />
       </aside>
       <section>
