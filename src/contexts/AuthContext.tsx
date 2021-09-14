@@ -42,22 +42,22 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }, []);
 
     async function signInWithGoogle() {
-        // const provider = new firebase.auth.GoogleAuthProvider();
+        const provider = new GoogleAuthProvider();
 
-        // const result = await auth.signInWithPopup(provider);
+        const result = await signInWithPopup(auth, provider);
 
-        // if (result.user) {
-        //     const { displayName, photoURL, uid } = result.user;
-        //     if (!displayName || !photoURL) {
-        //         throw new Error("Missing information from Google Account!");
-        //     }
+        if (result.user) {
+            const { displayName, photoURL, uid } = result.user;
+            if (!displayName || !photoURL) {
+                throw new Error("Missing information from Google Account!");
+            }
 
-        //     setUser({
-        //         id: uid,
-        //         name: displayName,
-        //         avatar: photoURL
-        //     });
-        // }
+            setUser({
+                id: uid,
+                name: displayName,
+                avatar: photoURL
+            });
+        }
     }
 
     return (
