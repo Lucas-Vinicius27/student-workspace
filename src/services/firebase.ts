@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import * as firebaseDatabase from "firebase/database";
+// import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_API_KEY,
