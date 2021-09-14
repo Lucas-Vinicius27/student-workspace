@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import * as firebaseAuth from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import * as firebaseDatabase from "firebase/database";
 
 const firebaseConfig = {
