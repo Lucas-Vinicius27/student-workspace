@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoGoogle from '../../public/icons/google-icon.svg';
+import logoApple from '../../public/icons/apple-icon.svg';
 import logoFull from '../../public/logo-full.svg';
 import logo from '../../public/logo.svg';
 import { Button } from '../components/Button';
@@ -27,6 +28,14 @@ const Index: NextPage = () => {
               <Button estiloButton="google">
                 <Image src={logoGoogle} alt="Logo do Google" />
                 <span>Faça login com sua conta do Google</span>
+              </Button>
+            </a>
+          </Link>
+          <Link href="/home" passHref>
+            <a>
+              <Button estiloButton="apple">
+                <Image src={logoApple} alt="Logo da Apple" />
+                <span>Faça login com sua conta da Apple</span>
               </Button>
             </a>
           </Link>
