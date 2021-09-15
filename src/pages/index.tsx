@@ -5,6 +5,7 @@ import Link from 'next/link';
 import logoGoogle from '../../public/icons/google-icon.svg';
 import logoFull from '../../public/logo-full.svg';
 import logo from '../../public/logo.svg';
+import { Button } from '../components/Button';
 import styles from '../styles/pages/index.module.scss';
 
 const Index: NextPage = () => {
@@ -23,10 +24,10 @@ const Index: NextPage = () => {
           <p>Aqui será o lugar onde você poderá maximizar seus estudos!</p>
           <Link href="/home" passHref>
             <a>
-              <button className={styles.createRoom}>
+              <Button estiloButton="google">
                 <Image src={logoGoogle} alt="Logo do Google" />
                 <span>Faça login com sua conta do Google</span>
-              </button>
+              </Button>
             </a>
           </Link>
         </div>
