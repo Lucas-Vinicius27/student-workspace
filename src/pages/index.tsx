@@ -34,7 +34,7 @@ const Index: NextPage = () => {
           <Link href="/home" passHref>
             <a>
               <Button estiloButton="apple">
-                <Image src={logoApple} alt="Logo da Apple" />
+                <Image width={24} height={24} src={logoApple} alt="Logo da Apple" />
                 <span>Faça login com sua conta da Apple</span>
               </Button>
             </a>
