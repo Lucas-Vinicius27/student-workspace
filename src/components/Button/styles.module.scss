@@ -1,0 +1,29 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+    width: 100%;
+    height: 3.2rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    border: 0;
+    transition: filter 0.2s;
+
+    span {
+        margin-left: 0.5rem;
+    }
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
+
+.google {
+    background: #EA4335;
+    color: var(--white);
+}
+
+.apple {
+    background: var(--white);
+}
