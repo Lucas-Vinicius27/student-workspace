@@ -38,14 +38,19 @@
 .countdownButton {
     width: 100%;
     height: 5rem;
-    margin-top: 5rem;
+
+    margin-top: 2rem;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border: 0;
     border-radius: 5px;
+
     background: var(--blue);
     color: var(--white);
+
     font-size: 1.25rem;
     font-weight: 600;
     transition: background-color .2s;
@@ -53,4 +58,14 @@
 
 .countdownButton:hover {
     background: var(--blue-dark);
+}
+
+.countdownButtonActive {
+    background: var(--white);
+    color: var(--title);
+}
+
+.countdownButtonActive:hover {
+    background: var(--red);
+    color: var(--white);
 }
