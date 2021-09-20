@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { ChallengeBox } from '../components/ChallengeBox/challengeBox';
 import { CompletedChallenge } from '../components/CompletedChallenges/completedChallenges';
 import { Countdown } from '../components/Countdown/countdown';
 import { Navigation } from '../components/Navigation';
@@ -10,10 +11,11 @@ import styles from '../styles/pages/home.module.scss';
 const Home: NextPage = () => {
   return (
     <main>
-      <Head>
-        <title>Student Workspace</title>
-      </Head>
       <div className={styles.container}>
+        <Head>
+          <title>Student Workspace</title>
+        </Head>
+      
         <XpBar />
         <section>
         <div>
@@ -22,7 +24,7 @@ const Home: NextPage = () => {
           <Countdown />
         </div>
         <div>
-
+          <ChallengeBox />
         </div>
        </section>
       </div>
@@ -35,7 +37,6 @@ const Home: NextPage = () => {
         <section>
           <h1>Home</h1>
         </section>
-        
       </div>
     </main>
   )
