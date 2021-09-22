@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         <Navigation />
         <section className={styles.container}>
           <XpBar />
-          <div>
+          <div className={styles.containerComponents}>
             <div>
               <Profile />
               <CompletedChallenge />
