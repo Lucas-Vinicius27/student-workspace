@@ -11,7 +11,7 @@ export function ChallengeBox() {
 
                     <main>
                         <img src="icons/body.svg" alt="" />
-                        <strong>Novo desáfio</strong>
+                        <strong>Novo desafio</strong>
                         <p>Corrija a postura</p>
                     </main>
 
