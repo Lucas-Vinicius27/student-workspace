@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import level from '../../../public/icons/level.svg';
 import styles from './styles.module.scss';
 
 export function Profile() {
@@ -7,8 +9,8 @@ export function Profile() {
             <div>
                 <strong>Lucas Vinicius</strong>
                 <p>
-                    <img src="icons/level.svg" alt="Level" />
-                    Level 1
+                    <Image src={level} alt="Level" />
+                    <span>Level 1</span>
                 </p>
             </div>
         </div>
