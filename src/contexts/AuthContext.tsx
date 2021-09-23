@@ -22,7 +22,7 @@ export const AuthContext = createContext({} as AuthContextType);
 export function AuthContextProvider(props: AuthContextProviderProps) {
     const [user, setUser] = useState<User>();
 
-    const handleUser = async (currentUser: User) => {
+    const handleUser = (currentUser: User) => {
         setUser(currentUser);
     };
 
