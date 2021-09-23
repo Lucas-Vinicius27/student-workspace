@@ -18,7 +18,9 @@ const Index: NextPage = () => {
       await signInWithGoogle();
     }
 
-    router.push("/home");
+    if (user) {
+      router.push("/home");
+    }
   }
 
   return (
