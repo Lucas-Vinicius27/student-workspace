@@ -6,6 +6,7 @@ import { Countdown } from '../components/Countdown';
 import { Navigation } from '../components/Navigation';
 import { Profile } from '../components/Profile';
 import { XpBar } from '../components/XpBar';
+import { CountdownContextProvider } from '../contexts/CountdownContext';
 import styles from '../styles/pages/home.module.scss';
 
 const Home: NextPage = () => {
@@ -19,15 +20,17 @@ const Home: NextPage = () => {
         <section className={styles.container}>
           <XpBar />
           <div className={styles.containerComponents}>
-            <div>
-              <Profile />
-              <CompletedChallenge />
-              <Countdown />
+            <CountdownContextProvider>
+              <div>
+                <Profile />
+                <CompletedChallenge />
+                <Countdown />
+              </div>
+              <div>
+                <ChallengeBox />
+              </div>
+            </CountdownContextProvider>
             </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </div>
         </section>
       </div>
     </main>
