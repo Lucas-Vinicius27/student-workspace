@@ -5,6 +5,7 @@ type User = {
     id: string;
     name: string;
     avatar: string;
+    token: string;
 }
 
 type AuthContextType = {
@@ -22,9 +23,10 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     const [user, setUser] = useState<User>();
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
+        const unsubscribe = auth.onAuthStateChanged(async user => {
             if (user) {
-                const { displayName, photoURL, uid } = user;
+                const { displayName, photoURL, uid, getIdToken } = user;
+                const token = await getIdToken();
 
                 if (!displayName || !photoURL) {
                     throw new Error("Missing information from Google Account!");
@@ -33,7 +35,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 setUser({
                     id: uid,
                     name: displayName,
-                    avatar: photoURL
+                    avatar: photoURL,
+                    token
                 });
             }
         });
@@ -51,7 +54,9 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         });
 
         if (result?.user) {
-            const { displayName, photoURL, uid } = result.user;
+            const { displayName, photoURL, uid, getIdToken } = result.user;
+            const token = await getIdToken();
+
             if (!displayName || !photoURL) {
                 throw new Error("Missing information from Google Account!");
             }
@@ -59,7 +64,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
             setUser({
                 id: uid,
                 name: displayName,
-                avatar: photoURL
+                avatar: photoURL,
+                token
             });
         }
     }
