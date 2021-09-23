@@ -1,12 +1,14 @@
 import type { AppProps } from 'next/app';
 import { AuthContextProvider } from '../contexts/AuthContext';
-import { ChallengeContext } from '../contexts/ChallengeContext';
+import { ChallengesContextProvider } from '../contexts/ChallengesContext';
 import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthContextProvider>
-      <Component {...pageProps} />
+      <ChallengesContextProvider>
+        <Component {...pageProps} />
+      </ChallengesContextProvider>
     </AuthContextProvider>
   );
 }
