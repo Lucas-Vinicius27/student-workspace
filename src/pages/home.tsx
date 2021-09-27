@@ -17,7 +17,7 @@ interface HomeProps {
   challengesCompleted: number,
 }
 
-const Home: NextPage = (props: HomeProps) => {
+const Home: NextPage<HomeProps> = (props) => {
   return (
     <main>
       <Head>
