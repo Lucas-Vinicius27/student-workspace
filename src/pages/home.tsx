@@ -9,7 +9,7 @@ import { XpBar } from '../components/XpBar';
 import { ChallengesContextProvider } from '../contexts/ChallengesContext';
 import { CountdownContextProvider } from '../contexts/CountdownContext';
 import { useAuth } from "../hooks/useAuth";
-import { child, database, get, ref } from "../services/firebase";
+import { database, onValue, ref } from "../services/firebase";
 import styles from '../styles/pages/home.module.scss';
 
 const Home: NextPage = () => {
@@ -18,15 +18,17 @@ const Home: NextPage = () => {
   let currentXp = 0;
   let challengesCompleted = 0;
 
-  get(
-    child(ref(database), `users/${user?.id}`)
-  ).then(snapshot => {
-    level = snapshot.val().level;
-    currentXp = snapshot.val().currentXp;
-    challengesCompleted = snapshot.val().challengesCompleted;
-  }).catch(error => {
+  onValue(
+    ref(database, `users/${user?.id}`),
+    snapshot => {
+      level = snapshot.val().level;
+      currentXp = snapshot.val().currentXp;
+      challengesCompleted = snapshot.val().challengesCompleted;
+    },
+    error => {
       console.log(error);
-  });
+    }
+  );
 
   return (
     <main>
