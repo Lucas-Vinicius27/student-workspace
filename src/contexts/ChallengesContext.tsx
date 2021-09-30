@@ -1,7 +1,8 @@
-import { createContext, useState, ReactNode, useEffect } from "react";
-import Cookies from 'js-cookie';
-import { LevelUpModal } from '../components/LevelUpModal';
+import { createContext, ReactNode, useEffect, useState } from "react";
 import challenges from '../../challenges.json';
+import { LevelUpModal } from '../components/LevelUpModal';
+import { useAuth } from "../hooks/useAuth";
+import { database, ref, update } from "../services/firebase";
 
 interface Challenge {
     type: string;
@@ -34,9 +35,10 @@ interface ChallengesProviderProps {
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
 export function ChallengesContextProvider({ children, ...rest }: ChallengesProviderProps) {
-    const [level, setLevel] = useState(rest.level ?? 0);
-    const [currentXp, setCurrentXp] = useState(rest.currentXp ?? 0);
-    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
+    const { user } = useAuth();
+    const [level, setLevel] = useState(rest.level);
+    const [currentXp, setCurrentXp] = useState(rest.currentXp);
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted);
 
     const [activeChallenge, setActiveChallenge] = useState<Challenge>();
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
@@ -48,10 +50,12 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
     }, [])
 
     useEffect(() => {
-        Cookies.set('level', String(level));
-        Cookies.set('currentXp', String(currentXp));
-        Cookies.set('challengesCompleted', String(challengesCompleted));
-    }, [level, currentXp, challengesCompleted])
+        update(ref(database, `users/${user?.id}`), {
+            currentXp,
+            level,
+            challengesCompleted
+        });
+    }, [level, currentXp, challengesCompleted, user?.id])
     
     function levelUp() {
         setLevel(level + 1);
