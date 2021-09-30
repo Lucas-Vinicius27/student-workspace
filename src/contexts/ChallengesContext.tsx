@@ -54,12 +54,12 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
             challengesCompleted
         });
     }, [level, currentXp, challengesCompleted, user?.id])
-    
+
     function levelUp() {
         setLevel(level + 1);
         setIsLevelUpModalOpen(true);
     }
-    
+
     function closeLevelUpModal() {
         setIsLevelUpModalOpen(false);
     }
