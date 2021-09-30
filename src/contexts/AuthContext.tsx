@@ -1,5 +1,14 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { auth, GoogleAuthProvider, signInWithPopup } from "../services/firebase";
+import {
+    auth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    database,
+    get,
+    ref,
+    set,
+    child
+} from "../services/firebase";
 
 type User = {
     id: string;
@@ -24,6 +33,23 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
     const handleUser = (currentUser: User) => {
         setUser(currentUser);
+
+        get(
+            child(ref(database), `users/${currentUser.id}`)
+        ).then(snapshot => {
+            if (!snapshot.exists()) {
+                set(ref(database, `users/${currentUser.id}`), {
+                    id: currentUser.id,
+                    name: currentUser.name,
+                    avatar: currentUser.avatar,
+                    level: 0,
+                    currentXp: 0,
+                    challengesCompleted: 0
+                });
+            }
+        }).catch(error => {
+            console.log(error);
+        });
     };
 
     useEffect(() => {
