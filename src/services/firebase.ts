@@ -1,6 +1,6 @@
 import * as firebase from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getDatabase, ref, set, get, child, onValue } from "firebase/database";
+import { child, get, getDatabase, ref, set, update } from "firebase/database";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -27,5 +27,5 @@ export {
     set,
     get,
     child,
-    onValue
+    update
 };
