@@ -1,13 +1,8 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import {
-    auth,
-    GoogleAuthProvider,
-    signInWithPopup,
-    database,
-    get,
-    ref,
-    set,
-    child
+    auth, child, database,
+    get, GoogleAuthProvider, ref,
+    set, signInWithPopup
 } from "../services/firebase";
 
 type User = {
