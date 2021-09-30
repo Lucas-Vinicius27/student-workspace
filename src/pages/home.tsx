@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { ChallengeBox } from '../components/ChallengeBox';
 import { CompletedChallenge } from '../components/CompletedChallenges';
@@ -7,17 +6,28 @@ import { Countdown } from '../components/Countdown';
 import { Navigation } from '../components/Navigation';
 import { Profile } from '../components/Profile';
 import { XpBar } from '../components/XpBar';
-import { CountdownContextProvider } from '../contexts/CountdownContext';
 import { ChallengesContextProvider } from '../contexts/ChallengesContext';
+import { CountdownContextProvider } from '../contexts/CountdownContext';
+import { useAuth } from "../hooks/useAuth";
+import { child, database, get, ref } from "../services/firebase";
 import styles from '../styles/pages/home.module.scss';
 
-interface HomeProps {
-  level: number,
-  currentXp: number,
-  challengesCompleted: number,
-}
+const Home: NextPage = () => {
+  const { user } = useAuth();
+  let level = 0;
+  let currentXp = 0;
+  let challengesCompleted = 0;
 
-const Home: NextPage<HomeProps> = (props) => {
+  get(
+    child(ref(database), `users/${user?.id}`)
+  ).then(snapshot => {
+    level = snapshot.val().level;
+    currentXp = snapshot.val().currentXp;
+    challengesCompleted = snapshot.val().challengesCompleted;
+  }).catch(error => {
+      console.log(error);
+  });
+
   return (
     <main>
       <Head>
@@ -26,9 +36,10 @@ const Home: NextPage<HomeProps> = (props) => {
       <div className={styles.wrapper}>
         <Navigation />
         <ChallengesContextProvider
-        level={props.level}
-        currentXp={props.currentXp}
-        challengesCompleted={props.challengesCompleted}>
+          level={level}
+          currentXp={currentXp}
+          challengesCompleted={challengesCompleted}
+        >
           <section className={styles.container}>
             <XpBar />
             <CountdownContextProvider>
@@ -51,15 +62,3 @@ const Home: NextPage<HomeProps> = (props) => {
 }
 
 export default Home
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const {level, currentXp, challengesCompleted} = ctx.req.cookies;
-
-  return {
-    props: {
-      level: Number(level),
-      currentXp: Number(currentXp),
-      challengesCompleted: Number(challengesCompleted)
-    }
-  }
-} 
