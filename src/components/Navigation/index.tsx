@@ -5,8 +5,7 @@ import houseBlue from '../../../public/icons/house-blue.svg';
 import houseGray from '../../../public/icons/house-gray.svg';
 import rankingBlue from '../../../public/icons/ranking-blue.svg';
 import rankingGray from '../../../public/icons/ranking-gray.svg';
-import userBlue from '../../../public/icons/user-blue.svg';
-import userGray from '../../../public/icons/user-gray.svg';
+import logout from '../../../public/icons/logout.svg';
 import logoSmall from '../../../public/logo-small.svg';
 import styles from './styles.module.scss';
 
@@ -54,16 +53,10 @@ export function Navigation() {
                     </li>
                     <li>
                         <div className={styles.containerLi}>
-                            <div className={
-                                router.pathname === "/user" ? styles.active : ""
-                            }></div>
-                            <Link href="/user" passHref>
+                            <div></div>
+                            <Link href="/" passHref>
                                 <a>
-                                    {router.pathname === "/user" ? (
-                                        <Image src={userBlue} alt="Usuário" />
-                                    ) : (
-                                        <Image src={userGray} alt="Usuário" />
-                                    )}
+                                    <Image src={logout} alt="Logout" />
                                 </a>
                             </Link>
                         </div>
