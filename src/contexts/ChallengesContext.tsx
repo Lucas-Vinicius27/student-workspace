@@ -43,7 +43,7 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
     const [activeChallenge, setActiveChallenge] = useState<Challenge>();
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
-    const xpToNextLevel = Math.pow((level + 1) * 4, 2);
+    const xpToNextLevel = Math.pow((level + 1) * 6, 2);
 
     useEffect(() => {
         Notification.requestPermission();
