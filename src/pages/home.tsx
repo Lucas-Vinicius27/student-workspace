@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { ChallengeBox } from '../components/ChallengeBox';
 import { CompletedChallenge } from '../components/CompletedChallenges';
@@ -8,28 +9,15 @@ import { Profile } from '../components/Profile';
 import { XpBar } from '../components/XpBar';
 import { ChallengesContextProvider } from '../contexts/ChallengesContext';
 import { CountdownContextProvider } from '../contexts/CountdownContext';
-import { useAuth } from "../hooks/useAuth";
-import { database, onValue, ref } from "../services/firebase";
 import styles from '../styles/pages/home.module.scss';
 
-const Home: NextPage = () => {
-  const { user } = useAuth();
-  let level = 0;
-  let currentXp = 0;
-  let challengesCompleted = 0;
+interface HomeProps {
+  level: number;
+  currentXp: number;
+  challengesCompleted: number;
+}
 
-  onValue(
-    ref(database, `users/${user?.id}`),
-    snapshot => {
-      level = snapshot.val().level;
-      currentXp = snapshot.val().currentXp;
-      challengesCompleted = snapshot.val().challengesCompleted;
-    },
-    error => {
-      console.log(error);
-    }
-  );
-
+const Home: NextPage<HomeProps> = ({level, currentXp, challengesCompleted}) => {
   return (
     <main>
       <Head>
@@ -64,3 +52,15 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { level, currentXp, challengesCompleted } = ctx.req.cookies;
+
+  return {
+    props: {
+      level: Number(level),
+      currentXp: Number(currentXp),
+      challengesCompleted: Number(challengesCompleted)
+    }
+  }
+}
