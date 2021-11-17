@@ -11,6 +11,9 @@ type User = {
     name: string;
     avatar: string;
     token: string | undefined;
+    level?: number;
+    currentXp?: number;
+    challengesCompleted?: number;
 }
 
 type AuthContextType = {
@@ -28,8 +31,6 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     const [user, setUser] = useState<User>();
 
     const handleUser = (currentUser: User) => {
-        setUser(currentUser);
-
         get(
             child(ref(database), `users/${currentUser.id}`)
         ).then(snapshot => {
@@ -39,10 +40,14 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                     name: currentUser.name,
                     avatar: currentUser.avatar
                 });
+            } else {
+                currentUser = snapshot.val();
             }
         }).catch(error => {
             console.log(error);
         });
+
+        setUser(currentUser);
     };
 
     useEffect(() => {
