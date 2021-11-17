@@ -53,12 +53,12 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
         Cookies.set("level", String(level));
         Cookies.set("challengesCompleted", String(challengesCompleted));
 
-        // update(ref(database, `users/${user?.id}`), {
-        //     currentXp,
-        //     level,
-        //     challengesCompleted
-        // });
-    }, [level, currentXp, challengesCompleted])
+        update(ref(database, `users/${user?.id}`), {
+            currentXp,
+            level,
+            challengesCompleted
+        });
+    }, [level, currentXp, challengesCompleted, user?.id])
 
     function levelUp() {
         setLevel(level + 1);
