@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import {
     auth, child, database,
@@ -50,6 +51,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 const { displayName, photoURL, uid } = user;
                 const getTokenUser = await auth.currentUser?.getIdTokenResult();
                 const token = getTokenUser?.token;
+                Cookies.set("token", String(token));
 
                 if (!displayName || !photoURL) {
                     throw new Error("Missing information from Google Account!");
@@ -80,6 +82,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
             const { displayName, photoURL, uid } = result.user;
             const getTokenUser = await auth.currentUser?.getIdTokenResult();
             const token = getTokenUser?.token;
+            Cookies.set("token", String(token));
 
             if (!displayName || !photoURL) {
                 throw new Error("Missing information from Google Account!");
