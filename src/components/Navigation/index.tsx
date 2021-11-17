@@ -32,7 +32,7 @@ export function Navigation() {
             </div>
             <nav>
                 <ul>
-                    <li>
+                    {/* <li>
                         <div className={styles.containerLi}>
                             <div className={
                                 router.pathname === "/home" ? styles.active : ""
@@ -47,7 +47,7 @@ export function Navigation() {
                                 </a>
                             </Link>
                         </div>
-                    </li>
+                    </li> */}
                     {/* <li>
                         <div className={styles.containerLi}>
                             <div className={
