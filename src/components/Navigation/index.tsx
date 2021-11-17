@@ -1,4 +1,5 @@
 import { useRouter } from 'next/dist/client/router';
+import Cookies from "js-cookie";
 import Image from 'next/image';
 import Link from 'next/link';
 import { signOut } from 'firebase/auth';
@@ -16,6 +17,7 @@ export function Navigation() {
 
     async function logout() {
         await signOut(auth).then(() => {
+            Cookies.remove("token");
             alert("Até logo! \u{1F44B}\u{1F601}");
             router.push("/");
         }).catch(error => {
