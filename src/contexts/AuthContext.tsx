@@ -36,10 +36,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 set(ref(database, `users/${currentUser.id}`), {
                     id: currentUser.id,
                     name: currentUser.name,
-                    avatar: currentUser.avatar,
-                    level: 0,
-                    currentXp: 0,
-                    challengesCompleted: 0
+                    avatar: currentUser.avatar
                 });
             }
         }).catch(error => {
