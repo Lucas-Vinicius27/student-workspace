@@ -39,8 +39,6 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                     name: currentUser.name,
                     avatar: currentUser.avatar
                 });
-            } else {
-                currentUser = snapshot.val();
             }
         }).catch(error => {
             console.log(error);
