@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import Cookies from "js-cookie";
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
 import { useAuth } from "../hooks/useAuth";
@@ -34,9 +35,9 @@ export const ChallengesContext = createContext({} as ChallengesContextData);
 
 export function ChallengesContextProvider({ children, ...rest }: ChallengesProviderProps) {
     const { user } = useAuth();
-    const [level, setLevel] = useState(rest.level);
-    const [currentXp, setCurrentXp] = useState(rest.currentXp);
-    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted);
+    const [level, setLevel] = useState(rest.level ?? 0);
+    const [currentXp, setCurrentXp] = useState(rest.currentXp ?? 0);
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
 
     const [activeChallenge, setActiveChallenge] = useState<Challenge>();
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
@@ -48,6 +49,10 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
     }, [])
 
     useEffect(() => {
+        Cookies.set("currentXp", String(currentXp));
+        Cookies.set("level", String(level));
+        Cookies.set("challengesCompleted", String(challengesCompleted));
+
         update(ref(database, `users/${user?.id}`), {
             currentXp,
             level,
