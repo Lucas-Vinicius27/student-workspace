@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { ChallengesContext } from '../../contexts/ChallengesContext';
 import { useAuth } from "../../hooks/useAuth";
+import challenges from '../../../challenges.json';
 import styles from './styles.module.scss';
 
 export function Profile() {
@@ -14,7 +15,7 @@ export function Profile() {
                 <strong>{user?.name}</strong>
                 <p>
                     <img src="icons/level.svg" alt="Level" />
-                    <span>Level {level}</span>
+                    <span>Nível {level} - Desafios por Nível {challenges.length}</span>
                 </p>
             </div>
         </div>
