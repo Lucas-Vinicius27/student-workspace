@@ -46,7 +46,7 @@ export function Navigation() {
                             </Link>
                         </div>
                     </li>
-                    <li>
+                    {/* <li>
                         <div className={styles.containerLi}>
                             <div className={
                                 router.pathname === "/ranking" ? styles.active : ""
@@ -61,7 +61,7 @@ export function Navigation() {
                                 </a>
                             </Link>
                         </div>
-                    </li>
+                    </li> */}
                     <li>
                         <div className={styles.containerLi}>
                             <Image src={logoutSVG} alt="Logout" onClick={logout} />
