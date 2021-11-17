@@ -54,7 +54,7 @@ const Home: NextPage<HomeProps> = ({level, currentXp, challengesCompleted}) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentXp, challengesCompleted, token } = ctx.req.cookies;
+  const { level, currentXp, challengesCompleted, sessao } = ctx.req.cookies;
 
   return {
     props: {
