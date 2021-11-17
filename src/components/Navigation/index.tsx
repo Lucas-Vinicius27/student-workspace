@@ -17,7 +17,7 @@ export function Navigation() {
 
     async function logout() {
         await signOut(auth).then(() => {
-            Cookies.remove("token");
+            Cookies.remove("sessao");
             alert("Até logo! \u{1F44B}\u{1F601}");
             router.push("/");
         }).catch(error => {
