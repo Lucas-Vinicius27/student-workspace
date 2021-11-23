@@ -3,9 +3,8 @@
 
 ## Sobre
 Sistema que auxilia a concentração utilizando Pomodoro, onde as pessoas podem
-fazer login usando sua conta do GOOGLE ou APPLE, a cada ciclo de descanço terá
-alguma atividade para descontração, completando esse exercício será somado pontos
-e quando tiver o avanço de nível será possível compartilha em uma rede social.
+fazer login usando sua conta do GOOGLE, a cada ciclo de descanço terá
+alguma atividade para descontração, completando esse exercício será somado pontos.
 
 Usando NEXT.JS no front e Firebase para autenticação e banco de dados.
 
@@ -16,7 +15,7 @@ O que você precisa ter para rodar essa aplicação:
 
 O que você precisa fazer para rodar essa aplicação:
 - Clonar o repositório.
-- Copiar e colar o arquivo `.env.example` e renomear para `.env.local` e colar os valores das variáveis de ambiente.
+- Clonar o arquivo `.env.example` o arquivo clonado renomeie para `.env.local` e adicionar os seus valores das variáveis de ambiente.
 - Entrar na pasta do projeto pelo terminal e rodar os comandos:
 
 ```bash
