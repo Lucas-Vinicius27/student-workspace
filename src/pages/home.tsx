@@ -54,13 +54,15 @@ const Home: NextPage<HomeProps> = ({level, currentXp, challengesCompleted}) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentXp, challengesCompleted } = ctx.req.cookies;
+  const { id } = ctx.req.cookies;
+  const dataFirebase = await fetch(`${process.env.NEXT_PUBLIC_APP_DOMAIN}/api/dataFirebase?id=${id}`);
+  const data = await dataFirebase.json();
 
   return {
     props: {
-      level: Number(level),
-      currentXp: Number(currentXp),
-      challengesCompleted: Number(challengesCompleted)
+      level: Number(data?.level),
+      currentXp: Number(data?.currentXp),
+      challengesCompleted: Number(data?.challengesCompleted)
     }
   }
 }
