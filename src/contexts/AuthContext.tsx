@@ -30,6 +30,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     const handleUser = (currentUser: User) => {
         setUser(currentUser);
         Cookies.set("sessao", String(true));
+        Cookies.set("id", String(currentUser.id));
 
         get(
             child(ref(database), `users/${currentUser.id}`)
