@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
@@ -49,10 +48,6 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
     }, [])
 
     useEffect(() => {
-        Cookies.set("currentXp", String(currentXp));
-        Cookies.set("level", String(level));
-        Cookies.set("challengesCompleted", String(challengesCompleted));
-
         update(ref(database, `users/${user?.id}`), {
             currentXp,
             level,
