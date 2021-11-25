@@ -24,6 +24,7 @@ export function Navigation() {
         //     console.log(error);
         // });
         Cookies.set("sessao", String(false));
+        Cookies.remove("id");
         alert("Até logo! \u{1F44B}\u{1F601}");
         router.push("/");
     };
