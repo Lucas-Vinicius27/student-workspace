@@ -1,8 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { child, database, ref, get } from "../../services/firebase";
 
+type Data = {
+    msg?: string;
+    level?: number;
+    currentXp?: number;
+    challengesCompleted?: number;
+}
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const id = req.query?.id;
 
     if (id === undefined) {
