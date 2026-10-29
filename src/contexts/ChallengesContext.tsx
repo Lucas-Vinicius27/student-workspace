@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useCallback, useEffect, useState } from "react";
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
 import { useAuth } from "../hooks/useAuth";
@@ -47,13 +47,20 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
         Notification.requestPermission();
     }, [])
 
+    const userId = user?.id;
+
     useEffect(() => {
-        update(ref(database, `users/${user?.id}`), {
+        // Só salva quando o usuário já carregou, senão gravaria em "users/undefined"
+        if (!userId) {
+            return;
+        }
+
+        update(ref(database, `users/${userId}`), {
             currentXp,
             level,
             challengesCompleted
         });
-    }, [level, currentXp, challengesCompleted, user?.id])
+    }, [level, currentXp, challengesCompleted, userId])
 
     function levelUp() {
         setLevel(level + 1);
@@ -64,7 +71,9 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
         setIsLevelUpModalOpen(false);
     }
 
-    function startNewChallenge() {
+    // useCallback mantém a mesma função entre renderizações,
+    // já que ela é dependência do timer no CountdownContext
+    const startNewChallenge = useCallback(() => {
         const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
         const challenge = challenges[randomChallengeIndex];
 
@@ -77,7 +86,7 @@ export function ChallengesContextProvider({ children, ...rest }: ChallengesProvi
                 body: `Valendo ${challenge.amount}xp!`
             })
         }
-    }
+    }, []);
 
     function resetChallenge() {
         setActiveChallenge(undefined);

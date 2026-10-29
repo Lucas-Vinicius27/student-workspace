@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import logoGoogle from '../../public/icons/google-icon.svg';

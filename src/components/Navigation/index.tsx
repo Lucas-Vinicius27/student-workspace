@@ -1,4 +1,4 @@
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import Cookies from "js-cookie";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -41,14 +41,12 @@ export function Navigation() {
                             <div className={
                                 router.pathname === "/home" ? styles.active : ""
                             }></div>
-                            <Link href="/home" passHref>
-                                <a>
-                                    {router.pathname === "/home" ? (
-                                        <Image src={houseBlue} alt="Dashboard" />
-                                    ) : (
-                                        <Image src={houseGray} alt="Dashboard" />
-                                    )}
-                                </a>
+                            <Link href="/home">
+                                {router.pathname === "/home" ? (
+                                    <Image src={houseBlue} alt="Dashboard" />
+                                ) : (
+                                    <Image src={houseGray} alt="Dashboard" />
+                                )}
                             </Link>
                         </div>
                     </li> */}
@@ -57,14 +55,12 @@ export function Navigation() {
                             <div className={
                                 router.pathname === "/ranking" ? styles.active : ""
                             }></div>
-                            <Link href="/ranking" passHref>
-                                <a>
-                                    {router.pathname === "/ranking" ? (
-                                        <Image src={rankingBlue} alt="Ranking" />
-                                    ) : (
-                                        <Image src={rankingGray} alt="Ranking" />
-                                    )}
-                                </a>
+                            <Link href="/ranking">
+                                {router.pathname === "/ranking" ? (
+                                    <Image src={rankingBlue} alt="Ranking" />
+                                ) : (
+                                    <Image src={rankingGray} alt="Ranking" />
+                                )}
                             </Link>
                         </div>
                     </li> */}

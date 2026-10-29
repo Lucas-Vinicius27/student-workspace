@@ -53,16 +53,33 @@ const Home: NextPage<HomeProps> = ({level, currentXp, challengesCompleted}) => {
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<HomeProps> = async (ctx) => {
   const { id } = ctx.req.cookies;
-  const dataFirebase = await fetch(`${process.env.NEXT_PUBLIC_APP_DOMAIN}/api/dataFirebase?id=${id}`);
+
+  // Sem o id do usuário não há progresso para carregar: volta para o login
+  if (!id) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false
+      }
+    };
+  }
+
+  const dataFirebase = await fetch(`${process.env.NEXT_PUBLIC_APP_DOMAIN}/api/dataFirebase?id=${encodeURIComponent(id)}`);
+
+  // Não renderiza com valores zerados: o ChallengesContext gravaria por cima do progresso salvo
+  if (!dataFirebase.ok) {
+    throw new Error(`Falha ao carregar os dados do usuário (status ${dataFirebase.status})`);
+  }
+
   const data = await dataFirebase.json();
 
   return {
     props: {
-      level: Number(data?.level),
-      currentXp: Number(data?.currentXp),
-      challengesCompleted: Number(data?.challengesCompleted)
+      level: Number(data.level),
+      currentXp: Number(data.currentXp),
+      challengesCompleted: Number(data.challengesCompleted)
     }
   }
 }

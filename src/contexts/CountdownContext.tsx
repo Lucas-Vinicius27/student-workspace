@@ -16,8 +16,6 @@ interface CountdownProviderProps {
 
 export const CountdownContext = createContext({} as CountdownContextData);
 
-let countdownTimeout: NodeJS.Timeout;
-
 export function CountdownContextProvider({ children }: CountdownProviderProps) {
     const { startNewChallenge } = useContext(ChallengesContext);
 
@@ -33,7 +31,6 @@ export function CountdownContextProvider({ children }: CountdownProviderProps) {
     }
 
     function resetCountdown() {
-        clearTimeout(countdownTimeout);
         setIsActive(false);
         setHasFinished(false);
         setTime(0.1 * 60);
@@ -41,15 +38,21 @@ export function CountdownContextProvider({ children }: CountdownProviderProps) {
 
     useEffect(() => {
         if (isActive && time > 0) {
-            countdownTimeout = setTimeout(() => {
-                setTime(time - 1);
-            }, 1000)
-        } else if (isActive && time === 0) {
-            setHasFinished(true);
-            setIsActive(false);
-            startNewChallenge();
+            const countdownTimeout = setTimeout(() => {
+                const newTime = time - 1;
+                setTime(newTime);
+
+                if (newTime === 0) {
+                    setHasFinished(true);
+                    setIsActive(false);
+                    startNewChallenge();
+                }
+            }, 1000);
+
+            // Cancela o timer pendente ao abandonar o ciclo ou desmontar
+            return () => clearTimeout(countdownTimeout);
         }
-    }, [isActive, time]);
+    }, [isActive, time, startNewChallenge]);
 
     return (
         <CountdownContext.Provider value={{

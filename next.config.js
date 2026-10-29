@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  images: {
+    // Avatares das contas Google (photoURL do Firebase Auth)
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.googleusercontent.com"
+      }
+    ]
+  },
   async redirects() {
     return [
       {
